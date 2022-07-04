@@ -1,4 +1,83 @@
-main {
-    height: 500px;
-    width: 200px;
-}
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+    border: 2px solid red;
+  }
+  
+  /* Clear fix hack */
+  .clearfix:after {
+       content: ".";
+       display: block;
+       clear: both;
+       visibility: hidden;
+       line-height: 0;
+       height: 0;
+  }
+  
+  .clear {
+      clear: both;
+  }
+  
+  /******************************************
+  /* BASE STYLES
+  /*******************************************/
+  
+  body {
+      
+  }
+  
+  
+  /******************************************
+  /* LAYOUT
+  /*******************************************/
+  main {
+      margin: 0;
+      background: black;
+      height: 500px;
+  }
+  
+  #input-container {
+      margin: auto;
+      height: 15%;
+      width: 100%;
+      border: 2px solid white;
+      background: pink;
+  }
+  
+  input {
+      display: block;
+      margin: auto;
+      height: 100%;
+      width: 75%;
+  }
+  
+  .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  
+      
+      border: 2px solid black;
+      border-radius: 25px;
+      background: black;
+      height: 500px;
+      width: 500px;
+  }
+  
+  #button-container {
+      height: ;
+      background: purple;
+  }
+  
+  .item {
+      order: 4;
+      height: 30%;
+      width: 20%;
+      gap: 20%;
+      row-gap: 20%;
+      column-gap: 20%;
+  }
+  
+  /******************************************
+  /* ADDITIONAL STYLES
+  /*******************************************/
