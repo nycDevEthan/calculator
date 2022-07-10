@@ -1,11 +1,17 @@
+// constructor - properties and methods
+
 class Calculator {
-    constructor(number1, number2, operand1, operand2) {
+    constructor() {
 
     }
 }
 
-let calculator = new Calculator;
+const calculator = new Calculator;
 
-let userInput = document.querySelector('button').addEventListener()
+// click number button
+// display value of number button on screen
+// append numbers clicked to display value on output
+// store in variable
+// if operator is clicked, clear display
 
-console.log(userInput);
+// **special** - when you type in 100 or the result is 100 - play a 100devs Gif
