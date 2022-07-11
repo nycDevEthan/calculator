@@ -6,6 +6,11 @@
     border: 1px solid red;
 }
 
+body {
+    padding: 0;
+    margin: 0;
+}
+
 h1 {
     font-size: 5rem;
     color: purple;
@@ -16,7 +21,7 @@ h1 {
     font-size: 5rem;
     width: 500px;
     /* padding: 50px; */
-    /* margin: 5% 0; */
+    margin: 5% auto;
     display: grid;
     grid-area: auto;
     grid-template-columns: repeat(4, 1fr);
@@ -25,15 +30,17 @@ h1 {
     background-color: black;
 }
 
-.display {
+#display {
     text-align: right;
     margin: 2%;
     grid-column: span 4;
     grid-row: 1;
+    align-items: stretch;
+    grid-auto-rows: minmax(max-content, auto);
     background-color: rgba(255, 255, 255);
 }
 
-.button {
+.number, .operator, #equals, #clear {
     cursor: pointer;
     text-align: center;
     padding: 20% 0;
