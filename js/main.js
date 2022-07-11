@@ -22,6 +22,8 @@ let operator;
 
 // for each element in array, adds 'click' event listener on each button, then for each click event runs function
 
+clearButton.addEventListener('click', clearDisplay());
+
 numberButtons.forEach((element) => element.addEventListener('click', (event) => {
     if (event.target.innerText === 'Clear') {
         clearDisplay();
@@ -47,8 +49,6 @@ operatorButtons.forEach((element) => element.addEventListener('click', event => 
         clearDisplay();
     }
 }));
-
-clearButton.addEventListener('click', clearDisplay());
 
 function clearDisplay() {
     display.innerHTML = null;
