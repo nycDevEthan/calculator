@@ -1,7 +1,7 @@
 // constructor - properties and methods
 
 class Calculator {
-    constructor() {
+    constructor(number1, number2, operator) {
 
     }
 }
@@ -10,96 +10,88 @@ const calculator = new Calculator;
 
 // declare and assign variables
 
-let display = document.getElementById('display');
-let number1Display = document.getElementById('number1');
-let number2Display = document.getElementById('number2');
-let operatorDisplay = document.getElementById('operator');
-const buttons = Array.from(document.getElementsByClassName('button'));
+const number1Display = document.getElementById('number1');
+const number2Display = document.getElementById('number2');
+const operatorDisplay = document.getElementById('operator');
+const numberButtons = Array.from(document.getElementsByClassName('button'));
+const operatorButtons = Array.from(document.getElementsByClassName('operator'));
+const equalsButton = document.getElementById('equals').addEventListener('click', solve); // needs event listener for button click
+const clearButton = document.getElementById('clear').addEventListener('click', clearDisplay);
 
-let number1;
-let arrOfNums = [];
-let number2;
-let operator;
-let result;
+let number1 = "";
+let number2 = "";
+let operator = "";
+let result = 0;
 
-// for each element in array, adds 'click' event listener on each button, then for each click event runs function
+function clearDisplay() {
+    number1Display.innerText = null;
+    number2Display.innerText = null;
+    operatorDisplay.innerText = null;
+}
 
-buttons.forEach((element, i) => element.addEventListener('click', (event) => {
-    arrOfNums.push(event.target.innerText);
-    console.log(arrOfNums, i);
+function resetValues() {
+    number1 = "";
+    number2 = "";
+    operator = "";    
+}
 
-    if (event.target.innerText === '+') {
-        return arrOfNums.join('');
+numberButtons.forEach((element, i) => element.addEventListener('click', (event) => {
+    if (operator === "") {
+        number1 += event.target.innerText;
+        console.log(number1);
+        number1Display.innerText = number1 * 1;
+    } else {
+        number2 += event.target.innerText;
+        console.log(number2);
+        number2Display.innerText = number2 * 1;
     }
 }));
 
-// buttons.forEach((element) => element.addEventListener('click', (event) => {
-//     if (event.target.innerText === '+') {
-//         number1 = number1Display.innerText;
-//         clearDisplay();
-//         number2Display.innerText = number1;
-//         operator = '+';
-//         operatorDisplay.innerText = operator;
-//         number2 = number2Display.innerText;
-//         if (event.target.innerText === "=") {
-//             clearAllDisplay();
-//             // operatorDisplay.innerText = Number(number1 + number2);
-//         }
-//     } else if (event.target.innerText === '-') {
-//         number1 = number1Display.innerText;
-//         clearDisplay();
-//         number2Display.innerText = number1;
-//         operator = '-';
-//         operatorDisplay.innerText = operator;
-//         if (event.target.innerText === "=") {
-//             sum();
-//         }
-//     } else if (event.target.class === '/') {
-//         number1 = number1Display.innerText;
-//         clearDisplay();
-//         number2Display.innerText = number1;
-//         operator = '/';
-//         operatorDisplay.innerText = operator;
-//         if (event.target.innerText === "=") {
-//             sum();
-//         }
-//     } else if (event.target.innerText === 'x') {
-//         number1 = number1Display.innerText;
-//         clearDisplay();
-//         number2Display.innerText = number1;
-//         operator = 'x';
-//         operatorDisplay.innerText = operator;
-//         if (event.target.innerText === "=") {
-//             sum();
-//         }
-//     } /* else if (event.target.innerText === '=') {
-//         clearDisplay();
-//     }*/ else if (event.target.innerText === 'Clear') {
-//         clearAllDisplay();
-//     } else {
-//         number1Display.innerText += event.target.innerText;
-//     } 
-// }));
+operatorButtons.forEach((element, i) => element.addEventListener('click', (event) => {
+    operator = event.target.innerText;
+    console.log(operator);
+    operatorDisplay.innerText = operator;
+}));
 
-// function clearDisplay() {
-//     number1Display.innerHTML = null;
-// }
+function solve() {
+    switch (operator) {
+        case '+':
+            clearDisplay();
+            operatorDisplay.innerText = add(number1, number2);
+            resetValues();
+            break;
+        case '-':
+            clearDisplay();
+            operatorDisplay.innerText = subtract(number1, number2);
+            resetValues();
+            break;
+        case 'x':
+            clearDisplay();
+            operatorDisplay.innerText = multiply(number1, number2);
+            resetValues();
+            break;
+        case '/':
+            clearDisplay();
+            operatorDisplay.innerText = divide(number1, number2);
+            resetValues();
+            break;
+        default:
+            alert('Enter a valid operation to solve');
+    }
+}
 
-// function clearAllDisplay() {
-//     number1Display.innerHTML = null;
-//     number2Display.innerHTML = null;
-//     operatorDisplay.innerHTML = null;
-// }
+function add(number1, number2) {
+    return ((number1 * 1) + (number2 * 1));
+}
 
-// function sum(n1, n2) {
-//     return n1 + n2;
-// }
+function subtract(number1, number2) {
+    return ((number1 * 1) - (number2 * 1));
+}
 
-// function addNumberToDisplay() {
-//     document.getElementById('display').innerHTML += clickedNumber.innerHTML;
-// }
+function multiply(number1, number2) {
+    return ((number1 * 1) * (number2 * 1));
+}
 
-// display value of number button on screen
-// append buttons clicked to display value on output
-// store in variable
-// if operator is clicked, clear display
+function divide(number1, number2) {
+    return ((number1 * 1) / (number2 * 1));
+}

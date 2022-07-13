@@ -41,6 +41,7 @@ h1 {
 }
 
 #number1, #operator, #number2 {
+    text-align: center;
     height: 50px;
     grid-row: 1;
     align-items: stretch;
